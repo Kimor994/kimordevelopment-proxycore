@@ -1,0 +1,83 @@
+#Shows all enabled commands and features of the plugin
+updater:
+  auto-update: true
+enabled-modules:
+  - AlertCommand
+  - FindCommand
+  - PlayersCommand
+  - SendCommand
+  - ServerCommand
+  - MsgCommand
+  - IgnoreCommand
+  - UnignoreCommand
+  - PingCommand
+  - StaffChat
+messages: #only minimessage format allowed.
+  global:
+    incorrect-arguments: "<red>Incorrect arguments."
+    no-permissions: "<red>No permissions."
+    incorrect-server: "<red>Server does not exist."
+    player-not-found: "<red>Player not found."
+    executable-by-player: "<red>You must be a player to use this command."
+  alerts:
+    screen:
+      enable: true
+      title: "<#ff3333><bold>ALERT"
+      subtitle: "<#d6d6d6>» <reset><#ff9494>%message%"
+    chat:
+      enable: true
+      lines:
+        - "<#ff3333><bold>ALERT <#d6d6d6>» <reset><#ff9494>%message%"
+  find:
+    lines:
+      - "<dark_gray> » <aqua>Showing info related to player: <white>%player%"
+      - "<dark_gray>  | <aqua>UUID<dark_gray> • <white>%uuid%"
+      - "<dark_gray>  | <aqua>IP<dark_gray> • <white>%ip%"
+      - "<dark_gray>  | <aqua>Server <dark_gray>• <white>%server%"
+      - "<dark_gray>  | <aqua>Language <dark_gray>• <white>%language_code% (%language_country%)"
+      - "<dark_gray>  | <aqua>Game version<dark_gray> • <white>%version_name% (%version_protocol%)"
+      - "<dark_gray>  | <aqua>Client brand<dark_gray> • <white> %client%"
+  players:
+    server-data-invalid: "???"
+    lines:
+      message-header: "<#4a4a4a> » <#45d0ff>There are <#adebff>%all%<#45d0ff> players connected to the proxy."
+      server-sublist-header: "<#4a4a4a> » <#adebff>Server: %subserver_name%<#4a4a4a> |<#45d0ff> Online<#4a4a4a> - <#adebff>%subserver_count%"
+      server-sublist-element: "<#4a4a4a>    ⬛ <#b6ebfc>%subserver_player_name%<#4a4a4a> • <#adebff>%subserver_player_client%"
+  send:
+    no-target-server: "<red>Target server not found."
+    no-source-server: "<red>Source server not found."
+    players-sent: "<green>All players from <white>%source%<green> have been sent to <white>%target%"
+  messaging:
+    player-to-ignore-doesnt-exist: "<red>Player who you want to ignore hadn't played ever before, or is offline."
+    player-is-offline: "<red>This player is offline!"
+    cant-ignore-self: "<red>You can't ignore yourself!"
+    already-ignored: "<red>You already have ignored this player!"
+    now-ignoring: "<green>You have ignored: <white>%player%"
+    cant-send-to-self: "<red>You cannot send a message to you!"
+    ignored: "<red>The player you want to message have blocked you."
+    sent-to-someone: "<dark_gray>[<aqua>Me<dark_gray><strikethrough>-><reset><white>%recepient%<dark_gray>]<gray> %message%"
+    received-from-someone: "<dark_gray>[<white>%sender%<dark_gray><strikethrough>-><reset><aqua>Me<dark_gray>]<gray> %message%"
+    no-message: "<red>You can't send empty message!"
+    no-player-to-reply: "<red>You don't have a player you cant response to."
+    cant-message-blocked-player: "<red>You can't send message to player you have blocked. You can unblock them using: <white>/unignore %blocked%"
+    recipient-offline: "<red>The recipient is offline."
+    not-ignoring: "<red>You aren't ignoring this player!"
+    unignored: "<green>You don't ignore anymore: <white>%target%"
+  ping:
+    message: "<#6e6e6e> » <#cccccc>Ping: <%color%>%ping%ms<#cccccc>. <%color%>%comment%"
+    components:
+      bandwith-good:
+        message: "Such an internet is to be envied!"
+        color: "#42fcff"
+      bandiwth-medium:
+        message: "Connection quality is good, but you can have some lags."
+        color: "#42ff4c"
+      bandwith-bad:
+        message: "Connection quality is medium. You will have lags."
+        color: "#f2ff42"
+      bandwidth-shitty:
+        message: "Connection quality is shitty. You will have extreme lags."
+        color: "#ff4545"
+  staff-chat:
+    message-symbol: '@'
+    message-format: "<dark_gray>[<red>@<dark_gray>] <#ff4e47>%admin% <dark_gray>» <white>%message%"
