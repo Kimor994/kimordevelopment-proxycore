@@ -12,6 +12,7 @@ import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 import pl.kimor.development.command.admin.*;
 import pl.kimor.development.command.conversation.*;
 import pl.kimor.development.command.players.PingCommand;
+import pl.kimor.development.config.Config;
 import pl.kimor.development.system.StaffChatListener;
 
 import java.io.IOException;

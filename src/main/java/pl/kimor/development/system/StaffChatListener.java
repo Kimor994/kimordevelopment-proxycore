@@ -3,10 +3,10 @@ package pl.kimor.development.system;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.proxy.Player;
-import pl.kimor.development.Config;
-import pl.kimor.development.ConfigKey;
+import pl.kimor.development.config.Config;
+import pl.kimor.development.config.ConfigKey;
 import pl.kimor.development.ProxyCore;
-import pl.kimor.development.Utils;
+import pl.kimor.development.config.Utils;
 
 public class StaffChatListener {
     @Subscribe(priority = 10)

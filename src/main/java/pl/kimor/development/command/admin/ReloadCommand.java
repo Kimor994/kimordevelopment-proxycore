@@ -2,8 +2,8 @@ package pl.kimor.development.command.admin;
 
 import com.velocitypowered.api.command.SimpleCommand;
 import org.spongepowered.configurate.ConfigurateException;
-import pl.kimor.development.Config;
-import pl.kimor.development.Utils;
+import pl.kimor.development.config.Config;
+import pl.kimor.development.config.Utils;
 
 public class ReloadCommand implements SimpleCommand {
 

@@ -2,9 +2,9 @@ package pl.kimor.development.command.conversation;
 
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
-import pl.kimor.development.Config;
-import pl.kimor.development.ConfigKey;
-import pl.kimor.development.Utils;
+import pl.kimor.development.config.Config;
+import pl.kimor.development.config.ConfigKey;
+import pl.kimor.development.config.Utils;
 
 import java.sql.SQLException;
 import java.util.Arrays;

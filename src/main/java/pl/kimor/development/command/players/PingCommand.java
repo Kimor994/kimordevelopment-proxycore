@@ -4,9 +4,9 @@ import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
 import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.text.Component;
-import pl.kimor.development.Config;
-import pl.kimor.development.ConfigKey;
-import pl.kimor.development.Utils;
+import pl.kimor.development.config.Config;
+import pl.kimor.development.config.ConfigKey;
+import pl.kimor.development.config.Utils;
 
 public class PingCommand implements SimpleCommand {
     @Override
