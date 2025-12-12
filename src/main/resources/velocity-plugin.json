@@ -1,0 +1,9 @@
+{
+  "id":"kimordevelopment-proxycore",
+  "name":"kimordevelopment-proxycore",
+  "version":"1.0.2",
+  "description":"Plugin implementujący wiele niezbędnych rzeczy do serwera velocity",
+  "authors":["kimor__"],
+  "dependencies":[],
+  "main":"pl.kimor.development.ProxyCore"
+}

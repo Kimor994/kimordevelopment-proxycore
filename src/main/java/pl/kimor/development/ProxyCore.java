@@ -14,9 +14,12 @@ import pl.kimor.development.command.conversation.*;
 import pl.kimor.development.command.players.PingCommand;
 import pl.kimor.development.config.Config;
 import pl.kimor.development.system.StaffChatListener;
+import pl.kimor.development.updater.Updater;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.SQLException;
@@ -24,17 +27,11 @@ import java.sql.SQLException;
 @Plugin(
         id = "kimordevelopment-velocity-proxy-core",
         name = "kimordevelopment-velocity-proxy-core",
-        version = "1.0.0",
+        version = "1.0.2",
         description = "Plugin implementujący wiele niezbędnych rzeczy do serwera velocity",
         authors = {"kimor__"}
 )
 public class ProxyCore {
-    private static long start = System.currentTimeMillis();
-    public static long getStartTime(){
-        return start;
-    }
-    private final static int version = 1;
-
     private static Config config;
 
     private static ProxyServer srv;
@@ -69,10 +66,16 @@ public class ProxyCore {
     private Logger logger;
 
     @Subscribe
-    public void onProxyInitialization(ProxyInitializeEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        logger.info("Loading ProxyCore version "+version);
+    public void onProxyInitialization(ProxyInitializeEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
+        Updater updater = new Updater();
+        if (updater.updateAvailable()){
+            logger.info("There is an update available! ("+updater.getLatestVersion()+"). Install it with: /core-update");
+        } else {
+            logger.info("There is no update available. You are using latest version.");
+        }
         CommandManager manager = getInstance().getCommandManager();
         manager.register(manager.metaBuilder("core-reload").plugin(this).build(),new ReloadCommand());
+        manager.register(manager.metaBuilder("core-update").plugin(this).build(),new UpdateCommand());
         manager.register(manager.metaBuilder("ping").plugin(this).build(), new PingCommand());
         manager.register(manager.metaBuilder("players").plugin(this).build(), new PlayersCommand());
         manager.register(manager.metaBuilder("find").plugin(this).build(),new FindCommand());

@@ -6,7 +6,7 @@
 
     <groupId>pl.kimor</groupId>
     <artifactId>kimordevelopment-ProxyCore</artifactId>
-    <version>1.0.0</version>
+    <version>stable</version>
     <packaging>jar</packaging>
 
     <name>kimordevelopment-Proxy</name>
