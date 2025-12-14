@@ -10,6 +10,7 @@ enabled-modules:
   - MsgCommand
   - IgnoreCommand
   - UnignoreCommand
+  - ReplyCommand
   - PingCommand
   - StaffChat
 messages: #only minimessage format allowed.

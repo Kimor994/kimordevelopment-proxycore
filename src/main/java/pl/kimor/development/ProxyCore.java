@@ -13,6 +13,8 @@ import pl.kimor.development.command.admin.*;
 import pl.kimor.development.command.conversation.*;
 import pl.kimor.development.command.players.PingCommand;
 import pl.kimor.development.config.Config;
+import pl.kimor.development.config.ConfigKey;
+import pl.kimor.development.config.ModulesManager;
 import pl.kimor.development.system.StaffChatListener;
 import pl.kimor.development.updater.Updater;
 
@@ -27,7 +29,7 @@ import java.sql.SQLException;
 @Plugin(
         id = "kimordevelopment-velocity-proxy-core",
         name = "kimordevelopment-velocity-proxy-core",
-        version = "1.0.2",
+        version = "1.0.0",
         description = "Plugin implementujący wiele niezbędnych rzeczy do serwera velocity",
         authors = {"kimor__"}
 )
@@ -44,7 +46,10 @@ public class ProxyCore {
     public static ProxyServer getInstance() {
         return srv;
     }
-
+    private static ProxyCore core;
+    public  static ProxyCore getCore(){
+        return core;
+    }
     @Inject
     public ProxyCore(ProxyServer server, @DataDirectory Path dataDirectory) throws IOException {
         srv=server;
@@ -58,8 +63,8 @@ public class ProxyCore {
                 Files.copy(in,file);
             }
         }
+        core=this;
         YamlConfigurationLoader loader = YamlConfigurationLoader.builder().path(file).build();
-
         Config.initialise(loader);
     }
     @Inject
@@ -76,28 +81,6 @@ public class ProxyCore {
         CommandManager manager = getInstance().getCommandManager();
         manager.register(manager.metaBuilder("core-reload").plugin(this).build(),new ReloadCommand());
         manager.register(manager.metaBuilder("core-update").plugin(this).build(),new UpdateCommand());
-        manager.register(manager.metaBuilder("ping").plugin(this).build(), new PingCommand());
-        manager.register(manager.metaBuilder("players").plugin(this).build(), new PlayersCommand());
-        manager.register(manager.metaBuilder("find").plugin(this).build(),new FindCommand());
-        manager.register(manager.metaBuilder("server")
-                .aliases("srv")
-                .plugin(this)
-                .build(),
-                new ServerCommand());
-        manager.register(manager.metaBuilder("alert")
-                        .aliases("broadcast")
-                        .plugin(this)
-                        .build(),
-                new AlertCommand());
-        manager.register(manager.metaBuilder("send")
-                        .plugin(this)
-                        .build(),
-                new SendCommand());
-        IgnoreList.initialise();
-        manager.register(manager.metaBuilder("message").plugin(this).aliases("msg","tell").build(),new MsgCommand());
-        manager.register(manager.metaBuilder("reply").plugin(this).aliases("r").build(),new ReplyCommand());
-        manager.register(manager.metaBuilder("ignore").plugin(this).build(),new IgnoreCommand());
-        manager.register(manager.metaBuilder("unignore").plugin(this).build(),new UnignoreCommand());
-        getInstance().getEventManager().register(this, new StaffChatListener());
+        ModulesManager.loadEnabledModules();
     }
 }
